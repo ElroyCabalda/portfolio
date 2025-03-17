@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import TimeLineElement from "@components/cv/TimeLine.astro";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-5xl font-bold">Elroy Christian D. Cabalda</div>
+    <div class="text-3xl py-3 font-bold">Software Developer</div>
+    <!-- <div class="py-2">
+      <text class="text-lg">
+        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
+        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
+        it useful!
+      </text>
+    </div> -->
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">Projects</div>
+  </div>
+
+  <HorizontalCard
+    title="LAI Mobile Application"
+    img="/lai.png"
+    desc="A mobile application that measures the Leaf Area Index of a plant using augmented reality. This project was presented in the 4th IPB JRO Scientific Conference on June 2024."
+    url="https://github.com/ElroyCabalda/LAI-Mobile-Application"
+  />
+  <div class="mx-5">
+    <b>Main Technologies Used:</b> Java and ARCore
+  </div>
+
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="LOLCODE Interpreter"
+    img="/lolcode.png"
+    desc="A program that reads and runs files written in the esolang LOLCODE."
+    url="https://github.com/ElroyCabalda/LOLCODE-Interpreter"
+  />
+  <div class="mx-5">
+    <b>Main Technologies Used:</b> Python
+  </div>
+
+  <div class="divider my-0"></div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Experience</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+
+    <TimeLineElement
+      title="Digital Phenotyping Intern"
+      subtitle="From September to November 2024 at IRRI, Los Baños, Laguna"
+    >
+      Learned foundations for analyzing digital images obtained by different instruments and to use software tools
+      that collect and analyze data in preparation for downstream analyses. 
+      Completed a project that used these tools to count the number of symbionts
+      as well as estimating the percentage diseased leaf area given an image.
+
+      <div class="mx-5">
+        <b>Main Technologies Used:</b> Ilastik, ImageBreed, and R.
+      </div>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Web Developer Intern"
+      subtitle="From July to September 2021 at InstantReader Inc., Los Baños, Laguna"
+    >
+      Assisted the web development team in building a website, from testing and maintaining the backend infrastructure,
+      to the creation of an intuitive frontend.
+
+      <div class="mx-5">
+        <b>Main Technologies Used:</b> PHP, MySQL, and MaterialUI
+      </div>
+    </TimeLineElement>
+
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Education</div>
+  </div>
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Principles of Graphics Design"
+      subtitle="April 2024 at University of the Philippines Open University"
+    />
+
+    <TimeLineElement
+      title="BS Computer Science"
+      subtitle="2019 to 2024 at University of the Philippines Los Baños"
+    />
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6 mb-5">
+    <li>Python</li>
+    <li>Java</li>
+    <li>JavaScript</li>
+    <li>PHP</li>
+    <li>MySQL</li>
+    <li>MongoDB</li>
+    <li>R</li>
+    <li>MaterialUI</li>
+  </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Soft Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6 mb-5">
+    <li>High Adaptibility</li>
+    <li>Critical Thinking</li>
+    <li>Time Management</li>
+    <li>Public Speaking</li>
+    <li>Communication</li>
+  </ul>
+</BaseLayout>
